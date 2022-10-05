@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const PerPage = 10;
@@ -518,6 +518,10 @@ function App() {
     setcurrentPage(index)
   }
 
+  useEffect(()=>{
+    pagenate(0)
+  },[]);
+
   let prev = ()=>{
     if(currentPage!==0)
       pagenate(currentPage-1)
@@ -529,7 +533,7 @@ function App() {
   }
   return <>
   <div className='container'>
-  <table class="table table-striped">
+  <table class="table table-striped"  style={{textAlign:"center",marginTop:"50px"}}>
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -550,7 +554,7 @@ function App() {
       }
     </table>
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
+      <ul class="pagination" style={{marginLeft:"300px",marginTop:"50px"}}>
       {
         currentPage !== 0 ? <button class="page-link" onClick={prev}>Previous</button> : null
       }
@@ -559,7 +563,7 @@ function App() {
             return <nav aria-label="Page navigation example">
               <ul class="pagination">
                 <li class="page-item">
-                  <button class="page-link" onClick={() => pagenate(index)}>{index + 1}</button>
+                  <button className={`page-link ${currentPage == index ? "active" : " "}`} onClick={() => pagenate(index)}>{index + 1}</button>
                 </li>
               </ul>
             </nav>
