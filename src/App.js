@@ -533,6 +533,7 @@ function App() {
   }
   return <>
   <div className='container'>
+    <h1 className='text-center mt-4 bg-dark' style={{color:"white"}}>PAGINATION</h1>
   <table class="table table-striped"  style={{textAlign:"center",marginTop:"50px"}}>
       <thead>
         <tr>
